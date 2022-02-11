@@ -1,9 +1,9 @@
 import React,{useState,useEffect} from 'react'
+import { useParams } from "react-router-dom";
 
-
-const GetSpecificUrs = (props) => {
-    console.log(props) 
-    var id=props.match.params.id
+//------get/:id 
+const GetSpecificUrs = () => {
+    const { id } = useParams(); //new version
         
     const [error,setError]=useState(null)
     const [isLoaded,setIsLoaded]=useState(false)
@@ -14,7 +14,7 @@ const GetSpecificUrs = (props) => {
         .then(res=>res.text() )
         .then(
             (data)=>{
-                console.log(data) //first
+                console.log(data) //get data from backend
                 setUser(data)
                 setIsLoaded(true)
             },
@@ -30,7 +30,7 @@ const GetSpecificUrs = (props) => {
     if(user){
         return (
             <div>
-                username: {user}
+                Specific User Name: {user}
             </div>
         )
     }
