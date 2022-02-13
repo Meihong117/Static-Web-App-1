@@ -10,7 +10,7 @@ function App() {
      <Routes>
        {/* Route new version(6) */}
         <Route exact path="/" element={<GetUsers />}/> 
-        <Route path="/user/:id" element={<GetSpecificUrs />}/>
+        <Route exact path="/user/:id" element={<GetSpecificUrs />}/>
         {/* <Route path="/postuser" element={<PostUser />}/> */}
 
      </Routes>
