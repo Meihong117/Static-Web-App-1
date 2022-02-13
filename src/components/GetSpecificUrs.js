@@ -38,3 +38,5 @@ const GetSpecificUrs = () => {
 }
 
 export default GetSpecificUrs
+
+// https://travel-functionapp.azurewebsites.net/api/user/{id}?
