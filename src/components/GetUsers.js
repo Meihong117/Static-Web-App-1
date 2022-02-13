@@ -28,6 +28,7 @@ const GetUsers = () => {
         return (
             <div>
                 Get All User: {user}
+                
             </div>
         )
     }
