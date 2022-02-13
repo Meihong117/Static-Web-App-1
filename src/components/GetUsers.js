@@ -11,7 +11,7 @@ const GetUsers = () => {
         .then(res=>res.text() )
         .then(
             (data)=>{
-                console.log(typeof data) //get data from backend
+                console.log(typeof data) //string
                 setUser(data)
                 setIsLoaded(true)
             },
