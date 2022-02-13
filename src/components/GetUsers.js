@@ -11,7 +11,7 @@ const GetUsers = () => {
         .then(res=>res.text() )
         .then(
             (data)=>{
-                console.log(data) //get data from backend
+                console.log(typeof data) //get data from backend
                 setUser(data)
                 setIsLoaded(true)
             },
@@ -23,12 +23,11 @@ const GetUsers = () => {
     },[])
     if(error){return <div>Error: {error.message}</div>}
     if(!isLoaded){return <div>Loading...</div>}
-
+    
     if(user){
         return (
             <div>
                 Get All User: {user}
-                
             </div>
         )
     }

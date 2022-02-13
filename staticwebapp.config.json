@@ -1,0 +1,15 @@
+{
+    "navigationFallback": {
+        "rewrite": "/index.html",
+        "exclude": [
+            "*.{jpg,gif,png}",
+            "assets/*"
+        ]
+    },
+    "routes": [
+        {
+            "route": "/user/:id",
+            "rewrite": "/components"
+        }
+    ]
+}
