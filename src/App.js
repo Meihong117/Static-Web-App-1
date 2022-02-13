@@ -3,17 +3,20 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GetSpecificUrs from './components/GetSpecificUrs';
 import GetUsers from './components/GetUsers'
 import PostUser from './components/PostUser';
+// import Container from 'react-bootstrap/Container'
 
 function App() {
   return (
    <Router>
-     <Routes>
+    
+       <Routes>
        {/* Route new version(6) */}
-        <Route exact path="/" element={<GetUsers />}/> 
+        <Route exact path="/users/:id" element={<GetSpecificUrs />}/> 
         <Route path="/user/:id" element={<GetSpecificUrs />}/>
         {/* <Route path="/postuser" element={<PostUser />}/> */}
-
-     </Routes>
+      </Routes>
+    
+     
    </Router>
   );
 }
