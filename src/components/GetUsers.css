@@ -1,0 +1,12 @@
+.container {
+}
+.wrapper {
+  border: 1px solid black;
+  height: auto;
+  width: 200px;
+  text-align: center;
+}
+
+h4 {
+  color: red;
+}
