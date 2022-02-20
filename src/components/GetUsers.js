@@ -1,3 +1,4 @@
+import { type } from '@testing-library/user-event/dist/type'
 import React,{useState,useEffect} from 'react'
 import './GetUsers.css'
 //------get all users
@@ -11,7 +12,7 @@ const GetUsers = () => {
         .then(res=>res.json() )
         .then(
             (data)=>{
-                console.log(data) 
+                // console.log(data) 
                 setUser(data)
                 setIsLoaded(true)
             },
@@ -24,25 +25,25 @@ const GetUsers = () => {
     if(error){return <div>Error: {error.message}</div>}
     if(!isLoaded){return <div>Loading...</div>}
     
-    // for(let i=0;i<user.length;i++){
-    //     console.log(user[i])
-        
-        return (
-            <>
-                Get All User: {user}
-                {user.map((i,index)=>{
+    
+
+    return (
+        <>
+            <a href="/user/1">
+                {user.map((i)=>(
                     <div className="container">
-                    <div className="wrapper">
-                        <h3>{i.id}</h3>
-                        <h4>{i.name}</h4>
-                        <p>{i.familyname}</p>
+                        <div className="wrapper">
+                            <h3>{i.id}</h3>
+                            <h4>{i.name}</h4>
+                            <p>{i.familyname}</p>
+                        </div>
                     </div>
-                </div>
-                })}
-                
-            </>
-        )
-    // }
+                ))}
+            </a>
+            
+            
+        </>
+    )
 }
 
 export default GetUsers
