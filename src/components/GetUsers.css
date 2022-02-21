@@ -1,10 +1,14 @@
 .container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 .wrapper {
   border: 1px solid black;
   height: auto;
   width: 200px;
   text-align: center;
+  margin: 20px;
 }
 
 h4 {

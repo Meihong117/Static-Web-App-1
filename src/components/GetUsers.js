@@ -12,7 +12,7 @@ const GetUsers = () => {
         .then(res=>res.json() )
         .then(
             (data)=>{
-                // console.log(data) 
+                console.log(data)  // [{...},{...},{...},...]
                 setUser(data)
                 setIsLoaded(true)
             },
@@ -29,19 +29,17 @@ const GetUsers = () => {
 
     return (
         <>
-            <a href="/user/1">
-                {user.map((i)=>(
-                    <div className="container">
-                        <div className="wrapper">
-                            <h3>{i.id}</h3>
-                            <h4>{i.name}</h4>
-                            <p>{i.familyname}</p>
+            {user && user.map((i)=>(
+                <div className="container" key={i.id}>
+                    <a href="/">
+                        <div className="wrapper" >
+                            <h3>ID: {i.id}</h3>
+                            <h4>First Name: {i.name}</h4>
+                            <p>Family Name: {i.familyname}</p>
                         </div>
-                    </div>
-                ))}
-            </a>
-            
-            
+                    </a>
+                </div>
+            ))}
         </>
     )
 }

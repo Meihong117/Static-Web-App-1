@@ -14,8 +14,8 @@ const GetSpecificUrs = () => {
         .then(res=>res.json() )
         .then(
             (data)=>{
-                console.log(data) 
-                setUser(data.res)
+                console.log(data) //{id: '1', name: 'first', familyname: null}
+                setUser(data)
                 setIsLoaded(true)
             },
             (error)=>{
@@ -26,32 +26,19 @@ const GetSpecificUrs = () => {
     },[])
     if(error){return <div>Error: {error.message}</div>}
     if(!isLoaded){return <div>Loading...</div>}
-
-    // let itemsToRender;  
-    // if (user) {    
-    //     itemsToRender = user.map(item => {      
-    //         return <div>{item.name}</div>;    
-    //     });  
-    // }
+   
     return (
-        
-            <div>
-                {user && user.map((i)=>(
-                    <div className="container">
-                        <div className="wrapper">
-                            <h3>{i}</h3>
-                            {/* <h4>{i.name}</h4> */}
-                            {/* <p>{i.familyname}</p> */}
-                        </div>
-                    </div>
-                ))}
-                
-                
-            </div>
-       
+        <>
+            {user && user.map(i=>(
+                <div key={i.id}>
+                    <h3>{i.id}</h3>
+                    <h3>{i.name}</h3>
+                    <h3>{i.familyname}</h3>
+                </div>
+            ))}
+        </>
     )
 }
 
 export default GetSpecificUrs
 
-// https://travel-functionapp.azurewebsites.net/api/user/{id}?
