@@ -14,7 +14,7 @@ const GetSpecificUrs = () => {
         .then(res=>res.json() )
         .then(
             (data)=>{
-                console.log(data) //{id: '1', name: 'first', familyname: null}
+                //console.log(data) 
                 setUser(data)
                 setIsLoaded(true)
             },
