@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Createuser = () => {
+const DeleteUser = () => {
     return (
         <div>
             <input type="text" />
@@ -12,4 +12,4 @@ const Createuser = () => {
     )
 }
 
-export default Createuser
+export default DeleteUser

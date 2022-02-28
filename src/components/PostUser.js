@@ -1,38 +1,41 @@
 import React,{useState,useEffect} from 'react'
 
 const PostUser = () => {
-    const [error,setError]=useState(null)
-    const [isLoaded,setIsLoaded]=useState(false)
-    const [postUser, setPostUser] = useState(null);
-    
+    const [id,setId]=useState('')
+    const [firstname, setFirstName] = useState('');
+    const [familyname, setFamilyName] = useState('');
+    const [isPending,setIsPending]=useState(false)
 
-    useEffect(()=>{
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React Hooks POST Request Example' })
-        };
-        fetch('https://travel-functionapp.azurewebsites.net/api/user',requestOptions)
-        .then(res=>res.json() )
-        .then(
-            (data)=>{
-                console.log(data) 
-                postUser(data.name)
-                setIsLoaded(true)
-            },
-            (error)=>{
-                setIsLoaded(true)
-                setError(error)
-            }
-        )
-    },[])
-    if(error){return <div>Error: {error.message}</div>}
-    if(!isLoaded){return <div>Loading...</div>}
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        let data={id, firstname, familyname}
+        setIsPending(true)
 
+        fetch('https://travel-functionapp.azurewebsites.net/api/postuser', {
+            method:'POST',
+            headers:{ 'Content-Type': 'application/json' },
+            body:JSON.stringify(data)
+        }).then((res)=>{
+            console.log(res)
+            setIsPending(false)
+        })
+        
+    }
     
     return (
-        <div>
-            post user {postUser}
+        <div className='postUser'>
+            <h2>Post user</h2>
+            <form action="" >
+                <label htmlFor="">Your ID</label> <br />
+                <input type="number" id='id' value={id} onChange={(e)=>setId(e.target.value)}/> <br />
+                <label htmlFor="">Your First Name</label> <br />
+                <input type="text" id='firstName' value={firstname} onChange={(e)=>setFirstName(e.target.value)}/> <br />
+                <label htmlFor="">Your Last Name</label> <br />
+                <input type="text" id='lastName' value={familyname} onChange={(e)=>setFamilyName(e.target.value)}/> <br />
+
+                 {!isPending && <button type='button' onClick={handleSubmit}>Submit</button>}
+                 {isPending && <button type='button' onClick={handleSubmit} disabled>Adding Data...</button>}
+            </form>
         </div>
     )
     

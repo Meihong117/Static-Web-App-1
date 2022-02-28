@@ -2,7 +2,7 @@ import { type } from '@testing-library/user-event/dist/type'
 import React,{useState,useEffect} from 'react'
 import './GetUsers.css'
 import { Link } from 'react-router-dom'
-//------get all users
+
 const GetUsers = () => {
     const [error,setError]=useState(null)
     const [isLoaded,setIsLoaded]=useState(false)
@@ -24,21 +24,30 @@ const GetUsers = () => {
         )
     },[])
     if(error){return <div>Error: {error.message}</div>}
-    if(!isLoaded){return <div>Loading...</div>}
+    if(!isLoaded){return <h3>Loading...</h3>}
 
     return (
         <>
-            {user && user.map((i)=>(
-                <div className="container" key={i.id}>
-                    <Link to={`/user/${i.id}`}>
-                        <div className="wrapper" >
-                            <h3>ID: {i.id}</h3>
-                            <h4>First Name: {i.name}</h4>
-                            <p>Family Name: {i.familyname}</p>
-                        </div>
-                    </Link>
-                </div>
-            ))}
+            <h3>Get All Users: </h3>
+            <div className='outer_container'>
+                {user && user.map((i)=>(
+                    <div className="container" key={i.id}>
+                        <Link to={`/user/${i.id}`}>
+                            <div className="wrapper" >
+                                <h3>ID: {i.id}</h3>
+                                <h4>First Name: {i.name}</h4>
+                                <p>Family Name: {i.familyname}</p>
+                            </div>
+                        </Link>
+                    </div>
+                ))}
+            </div>
+            <div className='link_to_createuser'>
+                <Link to={`postuser`}>
+                    <h2>Create User</h2>
+                </Link>
+            </div>
+            
         </>
     )
 }
