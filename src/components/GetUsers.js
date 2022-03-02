@@ -63,14 +63,6 @@ const GetUsers = () => {
             <div className='pagination justify-content-center'>
                 <Pagination postsPerPage={postsPerPage} totalPosts={user.length} paginate={paginate} />
             </div>
-           
-            {/* post user */}
-            <div className='link_to_createuser'>
-                <Link to={`postuser`}>
-                    <h2>Create User</h2>
-                </Link>
-            </div>
-            
         </>
     )
 }
