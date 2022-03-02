@@ -3,7 +3,7 @@ import {FaTimes} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 
-export const SideBarContainer=styled.aside`
+export const SideBarContainer=styled.div`
 position: fixed;
 z-index:999;
 width: 100%;

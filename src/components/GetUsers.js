@@ -17,7 +17,7 @@ const GetUsers = () => {
         .then(res=>res.json() )
         .then(
             (data)=>{
-                //console.log(data)  // [{...},{...},{...},...]
+                console.log(data)  // [{...},{...},{...},...]
                 setUser(data)
                 setIsLoaded(true)
             },
@@ -49,7 +49,7 @@ const GetUsers = () => {
                                 <Link to={`/user/${i.id}`} >
                                     <div className="card-body" >
                                         <h3 className='card-title text-center h2'>ID: {i.id}</h3>
-                                        <h4 className='card-text text-center'>First Name: {i.name}</h4>
+                                        <p className='card-text text-center'>First Name: {i.name}</p>
                                         <p className='card-text text-center'>Family Name: {i.familyname}</p>
                                     </div>
                                 </Link>

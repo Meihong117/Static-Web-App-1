@@ -2,13 +2,13 @@ import React,{useState,useEffect} from 'react'
 
 const PostUser = () => {
     const [id,setId]=useState('')
-    const [firstname, setFirstName] = useState('');
+    const [name, setFirstName] = useState('');
     const [familyname, setFamilyName] = useState('');
     const [isPending,setIsPending]=useState(false)
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        let data={id, firstname, familyname}
+        let data={id, name, familyname}
         setIsPending(true)
 
         fetch('https://travel-functionapp.azurewebsites.net/api/postuser', {
@@ -19,7 +19,7 @@ const PostUser = () => {
             console.log(res)
             setIsPending(false)
         })
-        
+        console.log(data)
     }
     
     return (
@@ -29,9 +29,9 @@ const PostUser = () => {
                 <label htmlFor="">Your ID</label> <br />
                 <input type="number" id='id' value={id} onChange={(e)=>setId(e.target.value)}/> <br />
                 <label htmlFor="">Your First Name</label> <br />
-                <input type="text" id='firstName' value={firstname} onChange={(e)=>setFirstName(e.target.value)}/> <br />
+                <input type="text" id='firstname' value={name} onChange={(e)=>setFirstName(e.target.value)}/> <br />
                 <label htmlFor="">Your Last Name</label> <br />
-                <input type="text" id='lastName' value={familyname} onChange={(e)=>setFamilyName(e.target.value)}/> <br />
+                <input type="text" id='familyname' value={familyname} onChange={(e)=>setFamilyName(e.target.value)}/> <br />
 
                  {!isPending && <button type='button' onClick={handleSubmit}>Submit</button>}
                  {isPending && <button type='button' onClick={handleSubmit} disabled>Adding Data...</button>}
