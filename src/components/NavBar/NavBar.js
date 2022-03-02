@@ -22,7 +22,7 @@ const NavBar = ({toggle}) => {
                     <NavLink to="/" >LINK4</NavLink>
                 </NavMenue>
                 <NavBtn>
-                    <NavBtnLink to="/login">logn in</NavBtnLink>
+                    <NavBtnLink to="/login">Log In</NavBtnLink>
                 </NavBtn>
             </Nav>
         </>

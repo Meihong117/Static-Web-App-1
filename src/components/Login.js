@@ -1,6 +1,7 @@
 import React from 'react'
 import {useRef, useState, useEffect,useContext} from 'react'
 import AuthContext from '../context/AuthProvider'
+import './Login'
 
 const LOGIN_URL='/auth'
 
@@ -55,31 +56,42 @@ const Login = () => {
     return (
         <>
             {success?(
-                <section>
+                <section className='container'>
                     <h1>You are logged in</h1> <br />
                     <p>
                         <a href="">Go to Home</a>
                     </p>
                 </section>
             ):(
-                <section>
+                <section className='container'>
                     <p ref={errRef} className={errMsg? "errmsg":"offscreen"} aria-live="assertive" >{errMsg}</p>
-                    <h1>Sign In</h1>
-                    <form onSubmit={handleSubmit}>
-                        <label htmlFor="username">Username: </label>
-                        <input type="text" id="username" ref={userRef} autoComplete="off" onChange={e=>setUser(e.target.value)} 
-                        value={user} required /> <br />
-                        <label htmlFor="password">Password: </label>
-                        <input type="password" id="password" onChange={e=>setPwd(e.target.value)} 
-                        value={pwd} required /> <br />
-                        <button>Sign In</button>
-                    </form>
-                    <p>
-                        Need an Account? <br />
-                        <span className="line">
-                            <a href="">Sign Up</a>
-                        </span>
-                    </p>
+                    <h3 style={{textAlign:'center'}} class="h3">Log In</h3>
+                    <div className='row justify-content-center'>
+                        <form onSubmit={handleSubmit} style={{width:'250px'}} >
+                            <div className='form-group'>
+                                <label htmlFor="username" className='form-label'>Username: </label> 
+                                <input className='form-control' type="text" id="username" ref={userRef} autoComplete="off" onChange={e=>setUser(e.target.value)} 
+                            value={user} required />
+                            </div>
+                            <div className='form-group'>
+                                <label htmlFor="password" className='form-label'>Password: </label> 
+                                <input className='form-control' type="password" id="password" onChange={e=>setPwd(e.target.value)} 
+                                value={pwd} required />
+                            </div>
+                            <br />
+                            <button className='btn btn-primary ' type="submit">Log In</button>
+                        </form>
+                    </div>
+                    <div className='row justify-content-center'>
+                         <p className='form-text' style={{textAlign:'center'}}>
+                            Need an Account? 
+                            <span className="line">
+                                <a href=""> Sign up</a>
+                            </span>
+                        </p>
+                    </div>
+                   
+                    
                 </section>
             )}
         </>

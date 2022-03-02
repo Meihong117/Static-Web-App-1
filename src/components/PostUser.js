@@ -33,8 +33,8 @@ const PostUser = () => {
                 <label htmlFor="">Your Last Name</label> <br />
                 <input type="text" id='familyname' value={familyname} onChange={(e)=>setFamilyName(e.target.value)}/> <br />
 
-                 {!isPending && <button type='button' onClick={handleSubmit}>Submit</button>}
-                 {isPending && <button type='button' onClick={handleSubmit} disabled>Adding Data...</button>}
+                 {!isPending && <button type='button' onClick={handleSubmit} className='btn btn-primary '>Submit</button>}
+                 {isPending && <button type='button' onClick={handleSubmit} disabled className='btn btn-primary '>Adding Data...</button>}
             </form>
         </div>
     )
