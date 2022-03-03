@@ -53,7 +53,7 @@ const GetUsers = () => {
                                 
                                     <div className="card-body" >
                                         <Link to={`/user/${i.id}`} >
-                                            <h3 className='card-title text-center h4'>Client Number: {index+1}</h3>
+                                            <h3 className='card-title text-center h4'>Number: {index+1}</h3>
                                         </Link>
                                         <p className='card-title text-center'>ID: {i.id}</p>
                                         <p className='card-text text-center'>First Name: {i.name}</p>
