@@ -19,9 +19,13 @@ const PostUser = () => {
             console.log(res)
             setIsPending(false)
         })
-        console.log(data)
     }
-    
+    const clearInput = ()=>{
+        setId("")
+        setFirstName("")
+        setFamilyName( "")
+     }
+     
     return (
         <div className='postUser'>
             <h2>Create new user</h2>

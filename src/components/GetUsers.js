@@ -28,7 +28,7 @@ const GetUsers = () => {
             }
         )
     }
-    if(!isLoaded){return <h3>Loading...</h3>}
+    if(!isLoaded){return <h3>Loading all users...</h3>}
 
     //== Pagination
     const indexOfLastPost=currentPage*postsPerPage
@@ -50,16 +50,14 @@ const GetUsers = () => {
                     {currentPosts && currentPosts.map((i, index)=>(
                         <div className='col-sm-6 col-md-4 v my-2' key={i.id}>
                             <div className="card shadow-sm w-100" key={i.id} style={{minHeight:225}}>
-                                
+                                <Link to={`/user/${i.id}`} >
                                     <div className="card-body" >
-                                        <Link to={`/user/${i.id}`} >
-                                            <h3 className='card-title text-center h4'>Number: {index+1}</h3>
-                                        </Link>
+                                        {/* <h3 className='card-title text-center h4'>Number: {index+1}</h3> */}
                                         <p className='card-title text-center'>ID: {i.id}</p>
                                         <p className='card-text text-center'>First Name: {i.name}</p>
                                         <p className='card-text text-center'>Family Name: {i.familyname}</p>
                                     </div>
-                                
+                                </Link>
                                 <button onClick={()=>deleteUser(i.id)} type='button' className='btn btn-primary' >DELETE</button>
                             </div>
                         </div>
