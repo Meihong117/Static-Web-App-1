@@ -24,7 +24,7 @@ const PostUser = () => {
     
     return (
         <div className='postUser'>
-            <h2>Post user</h2>
+            <h2>Create new user</h2>
             <form action="" >
                 <label htmlFor="">Your ID</label> <br />
                 <input type="number" id='id' value={id} onChange={(e)=>setId(e.target.value)}/> <br />

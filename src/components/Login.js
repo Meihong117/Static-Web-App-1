@@ -90,8 +90,6 @@ const Login = () => {
                             </span>
                         </p>
                     </div>
-                   
-                    
                 </section>
             )}
         </>

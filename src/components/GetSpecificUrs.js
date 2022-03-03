@@ -10,6 +10,9 @@ const GetSpecificUrs = () => {
     const [user,setUser]=useState([])
 
     useEffect(()=>{
+        getSpecificUser()
+    },[])
+    function getSpecificUser(){
         fetch('https://travel-functionapp.azurewebsites.net/api/user/'+id)
         .then(res=>res.json() )
         .then(
@@ -23,19 +26,24 @@ const GetSpecificUrs = () => {
                 setError(error)
             }
         )
-    },[])
+    }
+
     if(error){return <div>Error: {error.message}</div>}
     if(!isLoaded){return <div>Loading...</div>}
    
+   
     return (
         <>
-            {user && user.map(i=>(
+        <div>
+            { user.map(i=>(
                 <div key={i.id}>
                     <h3>{i.id}</h3>
                     <h3>{i.name}</h3>
                     <h3>{i.familyname}</h3>
                 </div>
             ))}
+        </div>
+        
         </>
     )
 }
