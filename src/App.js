@@ -16,8 +16,9 @@ function App() {
     }
   return (
    <Router>
-      <SideBar isOpen={isOpen} toggle={toggle} />
       <NavBar toggle={toggle}/>
+      <SideBar isOpen={isOpen} toggle={toggle} />
+      
       <Routes>
       {/* Route new version(6) */}
         <Route exact path="/" element={<GetUsers />}/> 

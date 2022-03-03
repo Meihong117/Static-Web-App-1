@@ -33,7 +33,7 @@ outline: none;
 export const SideBarWrapper=styled.div`
 color: #fff;
 `
-export const SideBarMenue=styled.div`
+export const SideBarMenue=styled.ul`
 display: grid;
 grid-template-columns: 1fr;
 /* margin: 80px 0; */
