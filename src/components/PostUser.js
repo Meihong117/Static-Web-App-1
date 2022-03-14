@@ -20,29 +20,31 @@ const PostUser = () => {
             setIsPending(false)
         })
     }
-    const clearInput = ()=>{
-        setId("")
-        setFirstName("")
-        setFamilyName( "")
-     }
+  
      
     return (
         <div className='postUser'>
             <h2 style={{textAlign:'center'}}>Create new user</h2>
             <div style={{display:'flex', justifyContent:'center'}}>
                 <form action="" className='form'>
-                    <label htmlFor="">Your ID</label> <br />
-                    <input type="number" id='id' value={id} onChange={(e)=>setId(e.target.value)}/> <br />
-                    <label htmlFor="">Your First Name</label> <br />
-                    <input type="text" id='firstname' value={name} onChange={(e)=>setFirstName(e.target.value)}/> <br />
-                    <label htmlFor="">Your Last Name</label> <br />
-                    <input type="text" id='familyname' value={familyname} onChange={(e)=>setFamilyName(e.target.value)}/> <br />
-
-                    {!isPending && <button type='button' onClick={handleSubmit} className='btn btn-primary '>Submit</button>}
-                    {isPending && <button type='button' onClick={handleSubmit} disabled className='btn btn-primary '>Adding Data...</button>}
+                    <div className='mb-3'>
+                        <label htmlFor="" className='form-label'>ID</label> 
+                        <input type="number" className='form-control' id='id' value={id} onChange={(e)=>setId(e.target.value)}/> 
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor="" className='form-label'>First Name</label> 
+                        <input type="text" className='form-control' id='firstname' value={name} onChange={(e)=>setFirstName(e.target.value)}/> 
+                    </div>
+                    <div className='mb-3'>
+                        <label htmlFor="" className='form-label'>Last Name</label> 
+                        <input type="text" className='form-control' id='familyname' value={familyname} onChange={(e)=>setFamilyName(e.target.value)}/>
+                    </div>
+                    <div style={{display:'flex', justifyContent:'center'}}>
+                        {!isPending && <button type='submit' onClick={handleSubmit} className='btn btn-primary'>Submit</button>}
+                        {isPending && <button type='submit' onClick={handleSubmit} disabled className='btn btn-primary'>Adding Data...</button>}
+                     </div>   
                 </form>
             </div>
-            
         </div>
     )
     

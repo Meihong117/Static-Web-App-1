@@ -34,7 +34,7 @@ const GetSpecificUrs = () => {
    
     return (
         <>
-        <div>
+        <div style={{display:'flex', justifyContent:'center'}}>
             { user.map(i=>(
                 <div key={i.id}>
                     <h3>ID: {i.id}</h3>

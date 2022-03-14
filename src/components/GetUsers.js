@@ -6,7 +6,7 @@ import Pagination from './Pagination'
 import { useParams } from "react-router-dom";
 
 const GetUsers = () => {
-    //== get all users
+    //== GET all users
     const [error,setError]=useState(null)
     const [isLoaded,setIsLoaded]=useState(false)
     const [user,setUser]=useState([])
@@ -14,10 +14,10 @@ const GetUsers = () => {
     const [postsPerPage, setPostsPerPage]=useState(3);
 
     useEffect(()=>{
-        getUsers()
+        getAllUsers()
     },[])
 
-    function getUsers(){
+    function getAllUsers(){
         fetch('https://travel-functionapp.azurewebsites.net/api/users')
         .then(res=>res.json())
         .then(
@@ -30,6 +30,29 @@ const GetUsers = () => {
     }
     if(!isLoaded){return <h3>Loading all users...</h3>}
 
+    function refreshPage() {
+        window.location.reload(false);
+      }
+
+    //== DELETE specific user
+    function deleteUser(id) {
+        fetch(`https://travel-functionapp.azurewebsites.net/api/deleteuser/${id}`,{
+            method:'DELETE',
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+               }
+        })
+        .then(res=>res.json())
+        .then(
+            (result)=>{
+                console.log(result)
+                getAllUsers()
+            }
+        )
+        
+    }
+
     //== Pagination
     const indexOfLastPost=currentPage*postsPerPage
     const indexOfFirstPage=indexOfLastPost-postsPerPage
@@ -37,11 +60,7 @@ const GetUsers = () => {
     //change page
     const paginate=(pageNumber)=>setCurrentPage(pageNumber)
 
-     //delete specific user
-    function deleteUser(id) {
-        fetch(`https://travel-functionapp.azurewebsites.net/api/deleteuser/${id}`,{method:'DELETE'})
-            .then(getUsers());
-    }
+   
     return (
         <>
             <h3 className='title'>Get All Users: </h3>
@@ -58,7 +77,8 @@ const GetUsers = () => {
                                         <p className='card-text text-center'>Family Name: {i.familyname}</p>
                                     </div>
                                 </Link>
-                                <button onClick={()=>deleteUser(i.id)} type='button' className='btn btn-primary' >DELETE</button>
+                                {/* DELETE */}
+                              <div className='btn justify-content-center'><button onClick={()=>deleteUser(i.id)} type='button' className='btn btn-danger' style={{width:'100px'}}>DELETE</button></div>  
                             </div>
                         </div>
                     ))}
