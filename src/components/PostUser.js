@@ -16,7 +16,7 @@ const PostUser = () => {
             headers:{ 'Content-Type': 'application/json' },
             body:JSON.stringify(data)
         }).then((res)=>{
-            console.log(res)
+            // console.log(res)
             setIsPending(false)
         })
     }

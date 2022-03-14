@@ -7,7 +7,6 @@ import PostUser from './components/PostUser';
 import Login from './components/Login';
 import NavBar from './components/NavBar/NavBar';
 import SideBar from './components/NavBar/SideBar';
-// import DeleteUser from './components/DeleteUser';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -25,7 +24,6 @@ function App() {
         <Route path="/user/:id" element={<GetSpecificUrs />}/>
         <Route path="/postuser" element={<PostUser />}/>
         <Route path="/login" element={<Login />}/>
-        {/* <Route path='/deleteuser/:id' element={<DeleteUser />} /> */}
       </Routes>
    </Router>
   );

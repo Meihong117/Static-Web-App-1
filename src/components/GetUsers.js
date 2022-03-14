@@ -3,7 +3,6 @@ import React,{useState,useEffect} from 'react'
 import './GetUsers.css'
 import { Link } from 'react-router-dom'
 import Pagination from './Pagination'
-import { useParams } from "react-router-dom";
 
 const GetUsers = () => {
     //== GET all users
@@ -34,7 +33,7 @@ const GetUsers = () => {
         window.location.reload(false);
       }
 
-    //== DELETE specific user
+    //== DELETE user
     function deleteUser(id) {
         fetch(`https://travel-functionapp.azurewebsites.net/api/deleteuser/${id}`,{
             method:'DELETE',
