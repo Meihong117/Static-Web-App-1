@@ -38,7 +38,7 @@ const GetUsers = () => {
     const paginate=(pageNumber)=>setCurrentPage(pageNumber)
 
      //delete specific user
-     function deleteUser(id) {
+    function deleteUser(id) {
         fetch(`https://travel-functionapp.azurewebsites.net/api/deleteuser/${id}`,{method:'DELETE'})
             .then(getUsers());
     }

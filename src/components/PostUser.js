@@ -28,18 +28,21 @@ const PostUser = () => {
      
     return (
         <div className='postUser'>
-            <h2>Create new user</h2>
-            <form action="" >
-                <label htmlFor="">Your ID</label> <br />
-                <input type="number" id='id' value={id} onChange={(e)=>setId(e.target.value)}/> <br />
-                <label htmlFor="">Your First Name</label> <br />
-                <input type="text" id='firstname' value={name} onChange={(e)=>setFirstName(e.target.value)}/> <br />
-                <label htmlFor="">Your Last Name</label> <br />
-                <input type="text" id='familyname' value={familyname} onChange={(e)=>setFamilyName(e.target.value)}/> <br />
+            <h2 style={{textAlign:'center'}}>Create new user</h2>
+            <div style={{display:'flex', justifyContent:'center'}}>
+                <form action="" className='form'>
+                    <label htmlFor="">Your ID</label> <br />
+                    <input type="number" id='id' value={id} onChange={(e)=>setId(e.target.value)}/> <br />
+                    <label htmlFor="">Your First Name</label> <br />
+                    <input type="text" id='firstname' value={name} onChange={(e)=>setFirstName(e.target.value)}/> <br />
+                    <label htmlFor="">Your Last Name</label> <br />
+                    <input type="text" id='familyname' value={familyname} onChange={(e)=>setFamilyName(e.target.value)}/> <br />
 
-                 {!isPending && <button type='button' onClick={handleSubmit} className='btn btn-primary '>Submit</button>}
-                 {isPending && <button type='button' onClick={handleSubmit} disabled className='btn btn-primary '>Adding Data...</button>}
-            </form>
+                    {!isPending && <button type='button' onClick={handleSubmit} className='btn btn-primary '>Submit</button>}
+                    {isPending && <button type='button' onClick={handleSubmit} disabled className='btn btn-primary '>Adding Data...</button>}
+                </form>
+            </div>
+            
         </div>
     )
     

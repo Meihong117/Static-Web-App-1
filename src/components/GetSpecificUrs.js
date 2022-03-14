@@ -37,9 +37,9 @@ const GetSpecificUrs = () => {
         <div>
             { user.map(i=>(
                 <div key={i.id}>
-                    <h3>{i.id}</h3>
-                    <h3>{i.name}</h3>
-                    <h3>{i.familyname}</h3>
+                    <h3>ID: {i.id}</h3>
+                    <h3>First Name: {i.name}</h3>
+                    <h3>Last Name: {i.familyname}</h3>
                 </div>
             ))}
         </div>

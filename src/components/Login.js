@@ -79,7 +79,7 @@ const Login = () => {
                                 value={pwd} required />
                             </div>
                             <br />
-                            <button className='btn btn-primary ' type="submit">Log In</button>
+                          <div style={{display:'flex', justifyContent:'center'}}><button className='btn btn-primary ' type="submit">Log In</button></div>  
                         </form>
                     </div>
                     <div className='row justify-content-center'>
