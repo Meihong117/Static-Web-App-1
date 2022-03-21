@@ -3,9 +3,9 @@ import React,{useState,useEffect} from 'react'
 import './GetUsers.css'
 import { Link } from 'react-router-dom'
 import Pagination from './Pagination'
-// import Modal from './Modal'
 import {Modal, Button} from 'react-bootstrap'
 import userEvent from '@testing-library/user-event'
+import { BsFillTrashFill,BsPencilFill } from "react-icons/bs";
 
 
 const GetUsers = () => {
@@ -23,9 +23,6 @@ const GetUsers = () => {
     const [openModal, setOpenModal] = useState(false);
     const [isPending,setIsPending]=useState(false)
 
-
-
-
     useEffect(()=>{
         getAllUsers()
     },[])
@@ -39,8 +36,6 @@ const GetUsers = () => {
                     setId(data[i].id)
                     setName(data[i].name)
                     setFamilyname(data[i].familyname)
-                    // console.log(data[i].name)
-                    
                 }
                 // console.log(data[i].name)  // [{...},{...},{...},...]
                 setUser(data)
@@ -49,10 +44,6 @@ const GetUsers = () => {
         )
     }
     if(!isLoaded){return <h3>Loading all users...</h3>}
-
-    function refreshPage() {
-        window.location.reload(false);
-      }
 
     //== DELETE user
     function deleteUser(id) {
@@ -70,7 +61,6 @@ const GetUsers = () => {
                 getAllUsers()
             }
         )
-        
     }
 
     //== Pagination
@@ -104,7 +94,6 @@ const GetUsers = () => {
             body: JSON.stringify(data)
         })
         .then((result)=>{
-                // console.log(result)
                 getAllUsers()
             }
         )
@@ -126,13 +115,14 @@ const GetUsers = () => {
                                         <p className='card-text text-center'>Family Name: {i.familyname}</p>
                                     </div>
                                 </Link>
-                                {/* DELETE */}
-                                <div className='btn justify-content-center'><button onClick={()=>deleteUser(i.id)} type='button' className='btn btn-danger' style={{width:'100px'}}>DELETE</button></div>  
-
-                                {/* UPDATE */}
-                                <div className='btn justify-content-center'>
-                                    <button type="button" className="btn btn-primary" onClick={()=>handleShow(index)} >UPDATE</button>
+                                
+                                <div className='icons'>
+                                    {/* UPDATE */}
+                                    <BsPencilFill type="button" className='bsPencilFill' onClick={()=>handleShow(index)}/>
+                                    {/* DELETE */}
+                                    <BsFillTrashFill type='button' className='bsFillTrashFill' onClick={()=>deleteUser(i.id)}/>  
                                 </div> 
+
                                 {/* modal */}
                                 <Modal show={openModal} onHide={handleClose}>
                                     <Modal.Header closeButton>

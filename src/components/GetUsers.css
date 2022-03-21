@@ -5,3 +5,25 @@
 h4 {
   color: red;
 }
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  font-size: 25px;
+}
+.bsFillTrashFill {
+  margin: 15px 10px;
+  color: rgb(243, 75, 75);
+}
+
+.bsPencilFill {
+  margin: 15px 10px;
+  color: rgb(77, 77, 245);
+}
+.bsFillTrashFill:hover {
+  color: rgb(241, 9, 9);
+}
+.bsPencilFill:hover {
+  color: rgb(22, 22, 247);
+}
