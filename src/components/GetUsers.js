@@ -21,7 +21,6 @@ const GetUsers = () => {
     const [currentPage, setCurrentPage]=useState(1);
     const [postsPerPage, setPostsPerPage]=useState(3);
     const [openModal, setOpenModal] = useState(false);
-    const [isPending,setIsPending]=useState(false)
 
     useEffect(()=>{
         getAllUsers()
@@ -57,7 +56,6 @@ const GetUsers = () => {
         .then(res=>res.json())
         .then(
             (result)=>{
-                // console.log(result)
                 getAllUsers()
             }
         )
@@ -70,7 +68,7 @@ const GetUsers = () => {
     //change page
     const paginate=(pageNumber)=>setCurrentPage(pageNumber)
 
-    //modal
+    //==modal
     const handleShow=(i)=>{
         setOpenModal(true)
         console.log(user[i])
@@ -81,7 +79,7 @@ const GetUsers = () => {
     }
     const handleClose=()=>setOpenModal(false)
 
-    // update user
+    //== UPDATE user
     const updateUser=(e)=>{
         e.preventDefault();
         let data={id, name, familyname}
@@ -94,14 +92,16 @@ const GetUsers = () => {
             body: JSON.stringify(data)
         })
         .then((result)=>{
-                getAllUsers()
+            setOpenModal(false)
+            getAllUsers()
+                
             }
         )
     }
     
     return (
         <>
-            <h3 className='title'>Get All Users: </h3>
+            <h3 className='title'>All Users: </h3>
             <div className="container" >
                 <div className='row m-2' >
                     {currentPosts && currentPosts.map((i, index)=>(
