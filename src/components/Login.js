@@ -65,7 +65,7 @@ const Login = () => {
             ):(
                 <section className='container'>
                     <p ref={errRef} className={errMsg? "errmsg":"offscreen"} aria-live="assertive" >{errMsg}</p>
-                    <h3 style={{textAlign:'center'}} class="h3">Log In</h3>
+                    <h3 style={{textAlign:'center'}} className="h3">Log In</h3>
                     <div className='row justify-content-center'>
                         <form onSubmit={handleSubmit} style={{width:'250px'}} >
                             <div className='form-group'>

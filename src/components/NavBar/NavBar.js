@@ -16,7 +16,7 @@ const NavBar = ({toggle}) => {
                 
                 <NavMenue>
                     <NavLink to="/postuser" >Create User</NavLink>
-                    <NavLink to="/" >LINK1</NavLink>
+                    <NavLink to="/updateuser" >Update User</NavLink>
                     <NavLink to="/" >LINK2</NavLink>
                     <NavLink to="/" >LINK3</NavLink>
                     <NavLink to="/" >LINK4</NavLink>
