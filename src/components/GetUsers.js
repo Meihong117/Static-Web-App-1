@@ -71,9 +71,10 @@ const GetUsers = () => {
 
     //==modal
     const handleShow=(i)=>{
+        console.log(user[i-1])
         setOpenModal(true)
-        console.log(user[i])
-        let item=user[i]
+        // console.log(user[i])
+        let item=user[i-1]
         setId(item.id)
         setName(item.name)
         setFamilyname(item.familyname)
@@ -120,7 +121,7 @@ const GetUsers = () => {
                                 
                                 <div className='icons'>
                                     {/* UPDATE */}
-                                    <BsPencilFill type="button" className='bsPencilFill' onClick={()=>handleShow(index)}/>
+                                    <BsPencilFill type="button" className='bsPencilFill' onClick={()=>handleShow(i.id)}/>
                                     {/* DELETE */}
                                     <BsFillTrashFill type='button' className='bsFillTrashFill' onClick={()=>deleteUser(i.id)}/>  
                                 </div> 
