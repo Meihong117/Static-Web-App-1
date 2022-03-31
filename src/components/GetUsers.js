@@ -22,6 +22,7 @@ const GetUsers = () => {
     const [postsPerPage, setPostsPerPage]=useState(3);
     const [openModal, setOpenModal] = useState(false);
 
+
     useEffect(()=>{
         getAllUsers()
     },[])
@@ -104,6 +105,7 @@ const GetUsers = () => {
             <h3 className='title'>All Users: </h3>
             <div className="container" >
                 <div className='row m-2' >
+                    {/* GET /users */}
                     {currentPosts && currentPosts.map((i, index)=>(
                         <div className='col-sm-6 col-md-4 v my-2' key={i.id}>
                             <div className="card shadow-sm w-100" key={i.id} style={{minHeight:225}}>
@@ -123,7 +125,7 @@ const GetUsers = () => {
                                     <BsFillTrashFill type='button' className='bsFillTrashFill' onClick={()=>deleteUser(i.id)}/>  
                                 </div> 
 
-                                {/* modal */}
+                                {/* modal to update user*/}
                                 <Modal show={openModal} onHide={handleClose}>
                                     <Modal.Header closeButton>
                                         <Modal.Title>Update User</Modal.Title>
