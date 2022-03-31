@@ -70,12 +70,11 @@ const GetUsers = () => {
     const paginate=(pageNumber)=>setCurrentPage(pageNumber)
 
     //==modal
-    const handleShow=(i)=>{
+    const handleShow=(id,name,familyname)=>{
         setOpenModal(true)
-        let item=user[i-1]
-        setId(item.id)
-        setName(item.name)
-        setFamilyname(item.familyname)
+        setId(id)
+        setName(name)
+        setFamilyname(familyname)
     }
     const handleClose=()=>setOpenModal(false)
 
@@ -119,7 +118,8 @@ const GetUsers = () => {
                                 
                                 <div className='icons'>
                                     {/* UPDATE */}
-                                    <BsPencilFill type="button" className='bsPencilFill' onClick={()=>handleShow(i.id)}/>
+                                    {/* {user.map((i,index)=>())} */}
+                                    <BsPencilFill type="button" className='bsPencilFill' onClick={()=>handleShow(i.id, i.name,i.familyname)}/>
                                     {/* DELETE */}
                                     <BsFillTrashFill type='button' className='bsFillTrashFill' onClick={()=>deleteUser(i.id)}/>  
                                 </div> 
