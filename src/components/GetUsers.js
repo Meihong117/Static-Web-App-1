@@ -71,9 +71,7 @@ const GetUsers = () => {
 
     //==modal
     const handleShow=(i)=>{
-        console.log(user[i-1])
         setOpenModal(true)
-        // console.log(user[i])
         let item=user[i-1]
         setId(item.id)
         setName(item.name)
