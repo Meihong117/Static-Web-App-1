@@ -22,7 +22,6 @@ const PostUser = () => {
             setFamilyName('')
         })
     }
-  
      
     return (
         <div className='postUser'>

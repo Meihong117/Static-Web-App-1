@@ -22,7 +22,6 @@ const GetUsers = () => {
     const [postsPerPage, setPostsPerPage]=useState(3);
     const [openModal, setOpenModal] = useState(false);
 
-
     useEffect(()=>{
         getAllUsers()
     },[])
@@ -68,7 +67,7 @@ const GetUsers = () => {
     //change page
     const paginate=(pageNumber)=>setCurrentPage(pageNumber)
 
-    //==modal
+    //== Modal
     const handleShow=(id,name,familyname)=>{
         setOpenModal(true)
         setId(id)
@@ -92,7 +91,6 @@ const GetUsers = () => {
         .then((result)=>{
             setOpenModal(false)
             getAllUsers()
-                
             }
         )
     }
@@ -117,7 +115,6 @@ const GetUsers = () => {
                                 
                                 <div className='icons'>
                                     {/* UPDATE */}
-                                    {/* {user.map((i,index)=>())} */}
                                     <BsPencilFill type="button" className='bsPencilFill' onClick={()=>handleShow(i.id, i.name,i.familyname)}/>
                                     {/* DELETE */}
                                     <BsFillTrashFill type='button' className='bsFillTrashFill' onClick={()=>deleteUser(i.id)}/>  
@@ -160,7 +157,6 @@ const GetUsers = () => {
             <div className='pagination justify-content-center'>
                 <Pagination postsPerPage={postsPerPage} totalPosts={user.length} paginate={paginate} />
             </div>
-            
         </>
     )
 }

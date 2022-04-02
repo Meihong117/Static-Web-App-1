@@ -22,7 +22,7 @@ const Search = () => {
     return (
         <div>
             <h1>Search</h1>
-            <input type="text" onChange={(e)=>search(e.target.value)} />
+            <input type="text" onChange={(e)=>search(e.target.value)} placeholder='First Name'/>
             {name && name.map(i=>(
                 <div key={i.id}>
                     <p>{i.id}</p>
@@ -32,7 +32,6 @@ const Search = () => {
                 ))
             }
             {check?<p>data not found</p>:null}
-            
         </div>
     )
 }
