@@ -54,7 +54,6 @@ const GetUsers = () => {
                 'Accept': 'application/json'
                }
         })
-        .then(res=>res.json())
         .then(
             (result)=>{
                 getAllUsers()
