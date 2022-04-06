@@ -1,23 +1,21 @@
 import {React, useState} from 'react'
+import { searchUser } from './api'
 
 const Search = () => {
     const [name,setName]= useState([])
     const [check,seCheck]=useState(false)
-    function search(name){
-        fetch(`https://travel-functionapp.azurewebsites.net/api/name/${name}`,{
-            method:'GET',
-        }) 
-        .then(res=>res.json())
-        .then((data)=>{
-            if(data.length>0){
-                setName(data)
-                seCheck(false)
-            }else{
-                seCheck(true)
-                setName(null)
-            }
-            })
-        }
+
+    const search=async(name)=>{
+    let data= await searchUser(name) 
+    if(data.length>0){
+        setName(data)
+        seCheck(false)
+    }else{
+        seCheck(true)
+        setName(null)
+    }
+            
+    }
 
     return (
         <div>
