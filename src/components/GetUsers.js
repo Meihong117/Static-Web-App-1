@@ -6,10 +6,9 @@ import Pagination from './Pagination'
 import {Modal, Button} from 'react-bootstrap'
 import userEvent from '@testing-library/user-event'
 import { BsFillTrashFill,BsPencilFill } from "react-icons/bs";
-
+import { allUsers } from './api'
 
 const GetUsers = () => {
-    //== GET all users
     const [error,setError]=useState(null)
     const [isLoaded,setIsLoaded]=useState(false)
 
@@ -25,22 +24,17 @@ const GetUsers = () => {
     useEffect(()=>{
         getAllUsers()
     },[])
+    
+    //== GET all users
+    const getAllUsers=async()=>{
+        setUser(await allUsers())
+        for(let i in user){
+            setId(user[i].id)
+            setName(user[i].name)
+            setFamilyname(user[i].familyname)
+        }
+        setIsLoaded(true)
 
-    function getAllUsers(){
-        fetch('https://travel-functionapp.azurewebsites.net/api/users')
-        .then(res=>res.json())
-        .then(
-            (data)=>{
-                for(let i in data){
-                    setId(data[i].id)
-                    setName(data[i].name)
-                    setFamilyname(data[i].familyname)
-                }
-                // console.log(data[i].name)  // [{...},{...},{...},...]
-                setUser(data)
-                setIsLoaded(true)
-            }
-        )
     }
     if(!isLoaded){return <h3>Loading all users...</h3>}
 
