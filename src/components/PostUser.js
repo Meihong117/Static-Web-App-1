@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import {postUser} from './api'
 
 const PostUser = () => {
     const [id,setId]=useState('')
@@ -6,21 +7,18 @@ const PostUser = () => {
     const [familyname, setFamilyName] = useState('');
     const [isPending,setIsPending]=useState(false)
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         let data={id, name, familyname}
         setIsPending(true)
+        //create fetch
+        await postUser(data)
 
-        fetch('https://travel-functionapp.azurewebsites.net/api/postuser', {
-            method:'POST',
-            headers:{ 'Content-Type': 'application/json' },
-            body:JSON.stringify(data)
-        }).then((res)=>{
-            setIsPending(false)
-            setId('')
-            setFirstName('')
-            setFamilyName('')
-        })
+        setIsPending(false)
+        setId('')
+        setFirstName('')
+        setFamilyName('')
+     
     }
      
     return (
