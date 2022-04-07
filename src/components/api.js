@@ -2,8 +2,8 @@ const baseurl='https://travel-functionapp.azurewebsites.net/api/'
 
 // GET/ all users
 export async function allUsers(){
-    const response=await fetch(`${baseurl}users`)
-    return response.json()
+    const res=await fetch(`${baseurl}users`)
+    return res.json()
 }
 // GET/ user/{id}
 export async function getUserId(id){
@@ -11,20 +11,20 @@ export async function getUserId(id){
     return res.json()
 }
 
+// GET/ search user/{name}
+export async function searchUser(name){
+    const res=await fetch(`${baseurl}name/${name}`)
+    return res.json()
+}
+
 // POST/ user
 export async function postUser(data){
-    const response=await fetch(`${baseurl}postuser`, {
+    const res=await fetch(`${baseurl}postuser`, {
         method:'POST',
         headers:{ 'Content-Type': 'application/json' },
         body:JSON.stringify(data)
     })
-    return response.ok
-}
-
-// GET/ search user by name
-export async function searchUser(name){
-    const res=await fetch(`${baseurl}name/${name}`)
-    return res.json()
+    return res.ok
 }
 
 //DELETE/ user/{id}
@@ -49,4 +49,5 @@ export async function changeUser(id,data){
            },
         body: JSON.stringify(data)
     })
+    return res.ok
 }
