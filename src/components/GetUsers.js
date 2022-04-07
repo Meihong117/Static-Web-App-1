@@ -6,7 +6,7 @@ import Pagination from './Pagination'
 import {Modal, Button} from 'react-bootstrap'
 import userEvent from '@testing-library/user-event'
 import { BsFillTrashFill,BsPencilFill } from "react-icons/bs";
-import { allUsers } from './api'
+import { allUsers, deleteUserId } from './api'
 
 const GetUsers = () => {
     const [error,setError]=useState(null)
@@ -39,19 +39,9 @@ const GetUsers = () => {
     if(!isLoaded){return <h3>Loading all users...</h3>}
 
     //== DELETE user
-    function deleteUser(id) {
-        fetch(`https://travel-functionapp.azurewebsites.net/api/deleteuser/${id}`,{
-            method:'DELETE',
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-               }
-        })
-        .then(
-            (result)=>{
-                getAllUsers()
-            }
-        )
+    const deleteUser=async(id)=> {
+        await deleteUserId(id)
+        getAllUsers()
     }
 
     //== Pagination

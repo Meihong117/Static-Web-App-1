@@ -26,3 +26,15 @@ export async function searchUser(name){
     const res=await fetch(`${baseurl}name/${name}`)
     return res.json()
 }
+
+//DELETE/ user/{id}
+export async function deleteUserId(id){
+    const res=await fetch(`${baseurl}deleteuser/${id}`,{
+        method:'DELETE',
+        headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+    })
+    return res.ok
+}
