@@ -6,7 +6,7 @@ import Pagination from './Pagination'
 import {Modal, Button} from 'react-bootstrap'
 import userEvent from '@testing-library/user-event'
 import { BsFillTrashFill,BsPencilFill } from "react-icons/bs";
-import { allUsers, deleteUserId } from './api'
+import { allUsers, deleteUserId,changeUser } from './api'
 
 const GetUsers = () => {
     const [error,setError]=useState(null)
@@ -61,22 +61,16 @@ const GetUsers = () => {
     const handleClose=()=>setOpenModal(false)
 
     //== UPDATE user
-    const updateUser=(e)=>{
+    const updateUser=async(e)=>{
         e.preventDefault();
         let data={id, name, familyname}
-        fetch(`https://travel-functionapp.azurewebsites.net/api/updateuser/${id}`,{
-            method:'PUT',
-            headers : { 
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-               },
-            body: JSON.stringify(data)
-        })
-        .then((result)=>{
-            setOpenModal(false)
-            getAllUsers()
-            }
-        )
+        
+        //fetch
+        await changeUser(id,data)
+     
+        setOpenModal(false)
+        getAllUsers()
+        
     }
     
     return (

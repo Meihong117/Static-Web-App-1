@@ -38,3 +38,15 @@ export async function deleteUserId(id){
     })
     return res.ok
 }
+
+//PUT/ user/{id}
+export async function changeUser(id,data){
+    const res=await fetch(`${baseurl}updateuser/${id}`, {
+        method:'PUT',
+        headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           },
+        body: JSON.stringify(data)
+    })
+}
