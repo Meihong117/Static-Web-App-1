@@ -6,14 +6,15 @@ const Search = () => {
     const [check,seCheck]=useState(false)
 
     const search=async(name)=>{
-    let data= await searchUser(name) 
-    if(data.length>0){
-        setName(data)
-        seCheck(false)
-    }else{
-        seCheck(true)
-        setName(null)
-    }
+        //fetch
+        let data= await searchUser(name) 
+        if(data.length>0){
+            setName(data)
+            seCheck(false)
+        }else{
+            seCheck(true)
+            setName(null)
+        }
             
     }
 

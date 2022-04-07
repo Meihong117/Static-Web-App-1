@@ -1,34 +1,24 @@
 import React,{useState,useEffect} from 'react'
 import { useParams } from "react-router-dom";
+import { getUserId } from './api';
 
 //------get/:id 
 const GetSpecificUrs = () => {
     const { id } = useParams(); //new version
         
-    const [error,setError]=useState(null)
     const [isLoaded,setIsLoaded]=useState(false)
     const [user,setUser]=useState([])
 
     useEffect(()=>{
         getSpecificUser()
     },[])
-    function getSpecificUser(){
-        fetch('https://travel-functionapp.azurewebsites.net/api/user/'+id)
-        .then(res=>res.json() )
-        .then(
-            (data)=>{
-                //console.log(data) 
-                setUser(data)
-                setIsLoaded(true)
-            },
-            (error)=>{
-                setIsLoaded(true)
-                setError(error)
-            }
-        )
+    const getSpecificUser=async()=>{
+        let data=await getUserId(id)
+            
+        setUser(data)
+        setIsLoaded(true)
     }
 
-    if(error){return <div>Error: {error.message}</div>}
     if(!isLoaded){return <div>Loading...</div>}
    
    
