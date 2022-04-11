@@ -7,6 +7,7 @@ import PostUser from './components/PostUser';
 import Login from './components/Login';
 import NavBar from './components/NavBar/NavBar';
 import SideBar from './components/NavBar/SideBar';
+import Home from './components/Home';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,7 +21,8 @@ function App() {
       
       <Routes>
       {/* Route new version(6) */}
-        <Route exact path="/" element={<GetUsers />}/> 
+        <Route exact path="/" element={<Home />}/> 
+        <Route path="/users" element={<GetUsers />}/> 
         <Route path="/user/:id" element={<GetSpecificUrs />}/>
         <Route path="/postuser" element={<PostUser />}/>
         <Route path="/login" element={<Login />}/>
