@@ -17,6 +17,12 @@ export async function searchUser(name){
     return res.json()
 }
 
+// GET/ sort by name
+export async function sortUser(){
+    const res=await fetch(`${baseurl}sort`)
+    return res.json()
+}
+
 // POST/ user
 export async function postUser(data){
     const res=await fetch(`${baseurl}postuser`, {

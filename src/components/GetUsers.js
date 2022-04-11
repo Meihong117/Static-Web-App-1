@@ -6,7 +6,7 @@ import Pagination from './Pagination'
 import {Modal, Button} from 'react-bootstrap'
 import userEvent from '@testing-library/user-event'
 import { BsFillTrashFill,BsPencilFill } from "react-icons/bs";
-import { allUsers, deleteUserId,changeUser,searchUser } from './api'
+import { allUsers, deleteUserId,changeUser,searchUser,sortUser } from './api'
 
 const GetUsers = () => {
     const [error,setError]=useState(null)
@@ -26,7 +26,7 @@ const GetUsers = () => {
     // const [check,seCheck]=useState(false)
 
     // sort
-    // const [sortValue,setSortValue]=useState('')
+    const [sortValue,setSortValue]=useState('')
 
     useEffect(()=>{
         getAllUsers()
@@ -91,12 +91,27 @@ const GetUsers = () => {
     }
 
     //== sort user
-    // const sortOptions=['id','name','familyname']
+    const sortOptions=['Id','First Name','Family Name']
 
-    // const handleSort=async(e)=>{
-    //     let value=e.target.value;
+    const handleSort=(e)=>{
+        let value=e.target.value; // id name familyname
+        setSortValue(value)
+        if(value==="Id"){
+          let sortedById=user.sort((a,b)=>a.id-b.id)
+          setUser(sortedById)
+        }
+        
+        if(value==='First Name'){
+            let sortedByName=user.sort((a,b)=>a.name.toLowerCase()>b.name.toLowerCase()?1:-1)
+            setUser(sortedByName)
+        }
+        if(value==="Family Name"){
+            let sortedByFamilyname=user.sort((a,b)=>a.familyname.toLowerCase()>b.familyname.toLowerCase()?1:-1)
+            setUser(sortedByFamilyname)
+        }
+        
 
-    // }
+    }
     return (
         <>
             <h3 className='title'>All Users: </h3>
@@ -108,7 +123,16 @@ const GetUsers = () => {
                 </form>
             </div>
             
-            
+            {/* sort */}
+            <div style={{display:'flex', justifyContent:'center', margin:'10px'}}>
+                <select className="form-select" id="" style={{width:'200px', borderRadius:"20px",width:'370px'}} onChange={handleSort} value={sortValue}>
+                    <option value="">Sort by options</option>
+                    {sortOptions.map((item,index)=>(
+                        <option value={item} key={index}>{item}</option>
+                    ))}
+                </select>
+            </div>
+
             <div className="container" >
                 <div className='row m-2' >
                     {/* GET /users */}
@@ -170,16 +194,7 @@ const GetUsers = () => {
                 <Pagination postsPerPage={postsPerPage} totalPosts={user.length} paginate={paginate} />
             </div>
 
-            {/* sort */}
-            {/* <div>
-                <h3>sort </h3>
-                <select name="" id="" style={{width:'200px', borderRadius:"20px"}} onChange={handleSort} value={sortValue}>
-                    <option value="">Please select value</option>
-                    {sortValue.map((item,index)=>(
-                        <option value={item} key={index}>{item}</option>
-                    ))}
-                </select>
-            </div> */}
+            
         </>
     )
 }
