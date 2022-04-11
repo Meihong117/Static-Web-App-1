@@ -11,9 +11,6 @@ const SideBar = ({isOpen,toggle}) => {
                 <SideBarMenue>
                     <SidebarLink to='/users'>Users Info</SidebarLink>
                     <SidebarLink to='/postuser'>Create User</SidebarLink>
-                    <SidebarLink to='/'>LINK2</SidebarLink>
-                    <SidebarLink to='/'>LINK3</SidebarLink>
-                    <SidebarLink to='/'>LINK4</SidebarLink>
                 </SideBarMenue>
                 <SideBtnWrap>
                     <SidebarRoute to='/login'>Sign In</SidebarRoute>
