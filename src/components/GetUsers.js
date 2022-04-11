@@ -43,7 +43,7 @@ const GetUsers = () => {
         setIsLoaded(true)
 
     }
-    if(!isLoaded){return <h3>Loading all users...</h3>}
+    if(!isLoaded){return <h3 className='text-center'>Loading all users...</h3>}
 
     //== DELETE user
     const deleteUser=async(id)=> {
