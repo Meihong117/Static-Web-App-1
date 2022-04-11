@@ -23,7 +23,10 @@ const GetUsers = () => {
     const [openModal, setOpenModal] = useState(false);
 
     // const [searchName,setSearchName]= useState('')
-    const [check,seCheck]=useState(false)
+    // const [check,seCheck]=useState(false)
+
+    // sort
+    // const [sortValue,setSortValue]=useState('')
 
     useEffect(()=>{
         getAllUsers()
@@ -86,6 +89,14 @@ const GetUsers = () => {
     const handleReset=()=>{
         getAllUsers()
     }
+
+    //== sort user
+    // const sortOptions=['id','name','familyname']
+
+    // const handleSort=async(e)=>{
+    //     let value=e.target.value;
+
+    // }
     return (
         <>
             <h3 className='title'>All Users: </h3>
@@ -108,7 +119,7 @@ const GetUsers = () => {
                                 <Link to={`/user/${i.id}`} >
                                     <div className="card-body" >
                                         {/* <h3 className='card-title text-center h4'>Number: {index+1}</h3> */}
-                                        <p className='card-title text-center'>ID: {i.id}</p>
+                                        <p className='card-title text-center'>User ID: {i.id}</p>
                                         <p className='card-text text-center'>First Name: {i.name}</p>
                                         <p className='card-text text-center'>Family Name: {i.familyname}</p>
                                     </div>
@@ -158,6 +169,17 @@ const GetUsers = () => {
             <div className='pagination justify-content-center'>
                 <Pagination postsPerPage={postsPerPage} totalPosts={user.length} paginate={paginate} />
             </div>
+
+            {/* sort */}
+            {/* <div>
+                <h3>sort </h3>
+                <select name="" id="" style={{width:'200px', borderRadius:"20px"}} onChange={handleSort} value={sortValue}>
+                    <option value="">Please select value</option>
+                    {sortValue.map((item,index)=>(
+                        <option value={item} key={index}>{item}</option>
+                    ))}
+                </select>
+            </div> */}
         </>
     )
 }
