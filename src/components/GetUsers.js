@@ -6,7 +6,7 @@ import Pagination from './Pagination'
 import {Modal, Button} from 'react-bootstrap'
 import userEvent from '@testing-library/user-event'
 import { BsFillTrashFill,BsPencilFill } from "react-icons/bs";
-import { allUsers, deleteUserId,changeUser } from './api'
+import { allUsers, deleteUserId,changeUser,searchUser } from './api'
 
 const GetUsers = () => {
     const [error,setError]=useState(null)
@@ -19,7 +19,11 @@ const GetUsers = () => {
 
     const [currentPage, setCurrentPage]=useState(1);
     const [postsPerPage, setPostsPerPage]=useState(3);
+
     const [openModal, setOpenModal] = useState(false);
+
+    // const [searchName,setSearchName]= useState('')
+    const [check,seCheck]=useState(false)
 
     useEffect(()=>{
         getAllUsers()
@@ -70,18 +74,37 @@ const GetUsers = () => {
      
         setOpenModal(false)
         getAllUsers()
-        
     }
     
+    //== SEARCH user
+    const handleSearch=async(searchName)=>{
+        //fetch
+        let data= await searchUser(searchName) 
+        setUser(data)
+        
+    }
+    const handleReset=()=>{
+        getAllUsers()
+    }
     return (
         <>
             <h3 className='title'>All Users: </h3>
+            {/* GET /search user */}
+            <div style={{display:'flex', justifyContent:'center'}} >
+                <form action=""  style={{display:'flex', justifyContent:'center'}}> 
+                    <input type="text" className='form-control' onChange={(e)=>handleSearch(e.target.value)} placeholder='Search with firstname...' style={{width:'300px'}}/>
+                    <button className="btn btn-primary" onClick={()=>handleReset()} style={{margin:'5px'}}>Reset</button>
+                </form>
+            </div>
+            
+            
             <div className="container" >
                 <div className='row m-2' >
                     {/* GET /users */}
                     {currentPosts && currentPosts.map((i, index)=>(
                         <div className='col-sm-6 col-md-4 v my-2' key={i.id}>
                             <div className="card shadow-sm w-100" key={i.id} style={{minHeight:225}}>
+                                {/* get specific user */}
                                 <Link to={`/user/${i.id}`} >
                                     <div className="card-body" >
                                         {/* <h3 className='card-title text-center h4'>Number: {index+1}</h3> */}

@@ -10,7 +10,7 @@ const SideBar = ({isOpen,toggle}) => {
             <SideBarWrapper>
                 <SideBarMenue>
                     <SidebarLink to='/postuser'>Create User</SidebarLink>
-                    <SidebarLink to='/search'>Search User</SidebarLink>
+                    <SidebarLink to='/'>LINK1</SidebarLink>
                     <SidebarLink to='/'>LINK2</SidebarLink>
                     <SidebarLink to='/'>LINK3</SidebarLink>
                     <SidebarLink to='/'>LINK4</SidebarLink>
