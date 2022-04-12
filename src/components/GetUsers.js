@@ -1,10 +1,8 @@
-import { type } from '@testing-library/user-event/dist/type'
 import React,{useState,useEffect} from 'react'
 import './GetUsers.css'
 import { Link } from 'react-router-dom'
 import Pagination from './Pagination'
 import {Modal, Button} from 'react-bootstrap'
-import userEvent from '@testing-library/user-event'
 import { BsFillTrashFill,BsPencilFill } from "react-icons/bs";
 import { allUsers, deleteUserId,changeUser,searchUser,sortUser } from './api'
 
